@@ -58,10 +58,12 @@ switch (command) {
     console.log("searching for films");
     //api search
     var movieQuery = process.argv.slice(3);
-    var movieUrl = "http://www.omdbapi.com/?t=" + movieQuery + "&apikey=7144e1fa";
+    if (!process.argv[3]){
+      movieQuery = "Mr. Nobody";
+    }
+    var movieUrl = "http://www.omdbapi.com/?t=" + movieQuery + "&apikey=trilogy";
     axios.get(movieUrl).then(function (response, err) {
       console.log("still searching for films")
-      console.log(response.data)
       console.log("Title: " + response.data.Title);
       console.log("Year: " + response.data.year);
       console.log("IMDB Rating: " + response.data.imdbRating);
@@ -74,6 +76,25 @@ switch (command) {
         console.log("Error: " + err)
       }
     })
+    // if (movieQuery.value != false) {
+
+    //   var movieQuery = "Mr. Nobody"
+    //   var movieUrl = "http://www.omdbapi.com/?t=" + movieQuery + "&apikey=trilogy";
+    //   axios.get(movieUrl).then(function (response, err) {
+    //     console.log("mr")
+    //     console.log("Title: " + response.data.Title);
+    //     console.log("Year: " + response.data.year);
+    //     console.log("IMDB Rating: " + response.data.imdbRating);
+    //     console.log("Rotten Tomatoes Rating: " + response.data.Ratings[0].Value);
+    //     console.log("Country: " + response.data.country);
+    //     console.log("Languages: " + response.data.Language);
+    //     console.log("Plot: " + response.data.Plot);
+    //     console.log("Cast: " + response.data.Actors);
+    //     if (err) {
+    //       console.log("Error: " + err)
+    //     }
+    //   })
+    // }
 
     //return
     break;
@@ -81,11 +102,19 @@ switch (command) {
     //random.txt
   case "do-what-it-says":
     console.log("doing it");
-    //process
+    fs.readFile('./radom.txt', 'utf8', function (error, data) {
+      if (error) {
+        console.log("Error: " + error);
+        return;
+      } else {
+        var randomString = data.split(',');
+        var command = randomString[0].trim();
+      }
+    })
     console.log("nearly there!")
     //return
-
     break;
+
   default:
     console.log("Please choose from concert-this, spotify-this-song, movie-this or do-what-it-says");
 }
