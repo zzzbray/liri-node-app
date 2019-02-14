@@ -16,8 +16,8 @@ switch (command) {
   case "concert-this":
     console.log("searching for concerts")
     var bandQuery = process.argv.slice(3).join(" ");
-    var url = "https://rest.bandsintown.com/artists/" + bandQuery + "/events?app_id=codingbootcamp";
-    axios.get(url).then(function (response, err) {
+    var concertUrl = "https://rest.bandsintown.com/artists/" + bandQuery + "/events?app_id=codingbootcamp";
+    axios.get(concertUrl).then(function (response, err) {
       console.log("Venue Name: " + response.data[0].venue.name);
       console.log("City: " + response.data[0].venue.city);
       console.log("Time: " + response.data[0].datetime); // needs to be updated with moment.js
@@ -57,7 +57,24 @@ switch (command) {
   case "movie-this":
     console.log("searching for films");
     //api search
-    console.log("still searching for films")
+    var movieQuery = process.argv.slice(3);
+    var movieUrl = "http://www.omdbapi.com/?t=" + movieQuery + "&apikey=7144e1fa";
+    axios.get(movieUrl).then(function (response, err) {
+      console.log("still searching for films")
+      console.log(response.data)
+      console.log("Title: " + response.data.Title);
+      console.log("Year: " + response.data.year);
+      console.log("IMDB Rating: " + response.data.imdbRating);
+      console.log("Rotten Tomatoes Rating: " + response.data.Ratings[0].Value);
+      console.log("Country: " + response.data.country);
+      console.log("Languages: " + response.data.Language);
+      console.log("Plot: " + response.data.Plot);
+      console.log("Cast: " + response.data.Actors);
+      if (err) {
+        console.log("Error: " + err)
+      }
+    })
+
     //return
     break;
 
