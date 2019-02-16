@@ -22,10 +22,6 @@ var doWhat = function () {
     if (err) {
       return console.log("Error:" + err);
     }
-    if (songQuery === '') {
-      console.log("searching for The Sign")
-      songQuery = "The Sign";
-    }
     console.log("---performing spotify search---");
     console.log("\n--------------\n");
     console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
@@ -61,7 +57,11 @@ switch (command) {
 
     //Spotify Command
   case "spotify-this-song":
-    var songQuery = process.argv.slice(3).join(" ");
+    var query = process.argv.slice(3).join(" ");
+    if (!query) {
+      console.log("searching for The Sign")
+      query = "The Sign";
+    }
     console.log("\n--------------\n\n---spotify command---");
     spotify.search({
       type: "track",
@@ -70,10 +70,7 @@ switch (command) {
       if (err) {
         return console.log("Error:" + err);
       }
-      if (songQuery === '') {
-        console.log("searching for The Sign")
-        songQuery = "The Sign";
-      }
+
       console.log("---performing spotify search---");
       console.log("\n--------------\n");
       console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
@@ -82,6 +79,7 @@ switch (command) {
       console.log("Listen on Spotify: " + data.tracks.items[0].preview_url);
       console.log("\n--------------\n");
     });
+
     break;
 
 
