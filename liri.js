@@ -22,7 +22,6 @@ var doWhat = function () {
     if (err) {
       return console.log("Error:" + err);
     }
-    //revert/default needs fixing
     if (songQuery === '') {
       console.log("searching for The Sign")
       songQuery = "The Sign";
@@ -36,8 +35,10 @@ var doWhat = function () {
     console.log("\n--------------\n");
   });
 }
+
 //Switch case statment that runs CLI app
 switch (command) {
+
   //Bands in Town Command
   case "concert-this":
     console.log("\n--------------\n\n---concert command---")
@@ -49,7 +50,7 @@ switch (command) {
       console.log("Venue Name: " + response.data[0].venue.name);
       console.log("City: " + response.data[0].venue.city);
       console.log("Time: " + response.data[0].datetime); // needs to be updated with moment.js
-      console.log("Buy tickets here: " + response.data[0].offers.url);
+      console.log("Buy tickets here: " + response.data[0].url);
       console.log("\n--------------\n");
       if (err) {
         console.log("Error: " + err)
@@ -60,27 +61,27 @@ switch (command) {
 
     //Spotify Command
   case "spotify-this-song":
-    // console.log("\n--------------\n\n---spotify command---");
-    // spotify.search({
-    //   type: "track",
-    //   query: query
-    // }, function (err, data) {
-    //   if (err) {
-    //     return console.log("Error:" + err);
-    //   }
-    //   //revert/default needs fixing
-    //   if (songQuery === '') {
-    //     console.log("searching for The Sign")
-    //     songQuery = "The Sign";
-    //   }
-    //   console.log("---performing spotify search---");
-    //   console.log("\n--------------\n");
-    //   console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
-    //   console.log("Song: " + data.tracks.items[0].name);
-    //   console.log("Appears on: " + data.tracks.items[0].album.name);
-    //   console.log("Listen on Spotify: " + data.tracks.items[0].preview_url);
-    //   console.log("\n--------------\n");
-    // });
+    var songQuery = process.argv.slice(3).join(" ");
+    console.log("\n--------------\n\n---spotify command---");
+    spotify.search({
+      type: "track",
+      query: query
+    }, function (err, data) {
+      if (err) {
+        return console.log("Error:" + err);
+      }
+      if (songQuery === '') {
+        console.log("searching for The Sign")
+        songQuery = "The Sign";
+      }
+      console.log("---performing spotify search---");
+      console.log("\n--------------\n");
+      console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
+      console.log("Song: " + data.tracks.items[0].name);
+      console.log("Appears on: " + data.tracks.items[0].album.name);
+      console.log("Listen on Spotify: " + data.tracks.items[0].preview_url);
+      console.log("\n--------------\n");
+    });
     break;
 
 
@@ -97,10 +98,10 @@ switch (command) {
       console.log("---performing movies search---");
       console.log("\n--------------\n");
       console.log("Title: " + response.data.Title);
-      console.log("Year: " + response.data.year);
+      console.log("Year: " + response.data.Year);
       console.log("IMDB Rating: " + response.data.imdbRating);
       console.log("Rotten Tomatoes Rating: " + response.data.Ratings[0].Value);
-      console.log("Country: " + response.data.country);
+      console.log("Country: " + response.data.Country);
       console.log("Languages: " + response.data.Language);
       console.log("Plot: " + response.data.Plot);
       console.log("Cast: " + response.data.Actors);
@@ -124,7 +125,6 @@ switch (command) {
       var randomString = data.split(',');
       var randomCommand = randomString[0];
       var randomQuery = randomString[1];
-      console.log(randomString);
       console.log("\n--------------\n\n---do what it says command---");
       spotify.search({
         type: "track",
