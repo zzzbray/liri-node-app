@@ -18,3 +18,6 @@ This command will return to the user information from OMDB about the movie they 
 ####node liri.js do-what-it-says
 This command will use the fs Node package to run a command that is stored in the random.txt file. The words `spotify-this-song I Want it That Way` will be stored in random.txt to run tests.
 
+
+# Referenced In
+This Repo is currently displayed on my [porfolio](https://zzzbray.github.io/Bootstrap-Portfolio/portfolio.html) and its [repo](https://github.com/zzzbray/Bootstrap-Portfolio).
