@@ -4,6 +4,7 @@ var keys = require("./keys.js");
 var axios = require("axios");
 var fs = require("fs");
 var Spotify = require("node-spotify-api");
+var moment = require("moment");
 var spotify = new Spotify(keys.spotify);
 
 //User vars
@@ -45,7 +46,7 @@ switch (command) {
       console.log("\n--------------\n");
       console.log("Venue Name: " + response.data[0].venue.name);
       console.log("City: " + response.data[0].venue.city);
-      console.log("Time: " + response.data[0].datetime); // needs to be updated with moment.js
+      console.log("Time: " + moment(response.data[0].datetime).format("MM/DD/YYYY"));
       console.log("Buy tickets here: " + response.data[0].url);
       console.log("\n--------------\n");
       if (err) {
@@ -70,13 +71,12 @@ switch (command) {
       if (err) {
         return console.log("Error:" + err);
       }
-
       console.log("---performing spotify search---");
       console.log("\n--------------\n");
       console.log("Artist: " + data.tracks.items[0].album.artists[0].name);
       console.log("Song: " + data.tracks.items[0].name);
       console.log("Appears on: " + data.tracks.items[0].album.name);
-      console.log("Listen on Spotify: " + data.tracks.items[0].preview_url);
+      console.log("Listen on Spotify: " + data.tracks.items[0].external_urls.spotify);
       console.log("\n--------------\n");
     });
 
