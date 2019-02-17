@@ -4,7 +4,7 @@
 ## Description
 This node app works with different APIs to make AJAX calls based on inputs in the command line
 
-Data from the APIs are retrieved by using the Axios npm. The APIs used in liri-node-app are Bands in Town, OMDB and Spotify.
+Data from the APIs are retrieved by using the Axios npm. The APIs used are Bands in Town, OMDB and Spotify.
 
 ## Usage
 
@@ -42,5 +42,5 @@ This command will use the fs Node package to run a command that is stored in the
 
 
 
-# Referenced In
-This Repo is currently displayed on my [porfolio](https://zzzbray.github.io/Bootstrap-Portfolio/portfolio.html) and its [repo](https://github.com/zzzbray/Bootstrap-Portfolio).
+### Referenced In
+This repo is currently displayed on my [porfolio](https://zzzbray.github.io/Bootstrap-Portfolio/portfolio.html) and its [repo](https://github.com/zzzbray/Bootstrap-Portfolio).
