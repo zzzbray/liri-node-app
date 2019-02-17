@@ -1,11 +1,14 @@
 # Liri
+======
 
 ### Description
+------
 This node app works with different APIs to make AJAX calls based on inputs in the command line
 
 Data from the APIs are retrieved by using the Axios npm. The APIs used in liri-node-app are Bands in Town, OMDB and Spotify.
 
 ### Usage
+------
 
 The app can currently react to and process 4 different commands.
 
