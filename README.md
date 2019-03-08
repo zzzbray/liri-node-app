@@ -1,4 +1,4 @@
-# Liri
+# liri
 
 
 ## Description
@@ -41,6 +41,6 @@ This command will use the fs Node package to run a command that is stored in the
 
 
 ### References
-This repo is currently displayed on my [porfolio](https://zzzbray.github.io/Bootstrap-Portfolio/portfolio.html) and its [repo](https://github.com/zzzbray/Bootstrap-Portfolio).
+This repo is currently displayed on my [porfolio](https://zzzbray.github.io/bootstrapPortfolio/portfolio.html) and its [repo](https://github.com/zzzbray/bootstrapPortfolio).
 
 &copy; 2018 zzzbray
